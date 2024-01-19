@@ -24,6 +24,11 @@ function game() with previous playRound function inside it to loop for a best of
 */
 
 //function to get random computer choice
+function getComputerChoice() {
+    const choices = ["Rock", "Paper", "Scissors"];
+    num = Math.floor(Math.random() * 3);
+    return choices[num];
+}
 
 //function to play one round which takes players selection and computers selection from getComputerChoice function
 //take user input
