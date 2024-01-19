@@ -42,6 +42,42 @@ function getComputerChoice() {
 //if player scissors and comp rock, comp wins
 //else replay
 //string to declare winner of the round
+function playRound(playerChoice, computerSelection) {
+    let userChoice = prompt("Rock, Paper, or Scissors?");
+    let choice = userChoice.toLowerCase();
+    let randomSelection = getComputerChoice();
+    const computerChoice = randomSelection.toLowerCase();
+    let winner = `You win! ${choice[0].toUpperCase() + choice.slice(1)} beats ${randomSelection}`;
+    let loser = `You lose! ${randomSelection} beats ${choice[0].toUpperCase() + choice.slice(1)}`;  
+    if (choice === "rock" || choice === "paper" || choice === "scissors") {
+        if (choice === "rock" && computerChoice === "scissors") {
+            return winner;
+        }
+        else if (choice === "rock" && computerChoice === "paper") {
+            return loser;
+        }
+        else if (choice === "paper" && computerChoice === "rock") {
+            return winner;
+        }
+        else if(choice === "paper" && computerChoice === "scissors") {
+            return loser;
+        }
+        else if(choice === "scissors" && computerChoice === "paper") {
+            return winner;
+        }
+        else if(choice === "scissors" && computerChoice === "rock") {
+            return loser;
+        }
+        else {
+            alert("Tie! Play again!")
+            playRound();
+        }
+    }
+    else {
+        alert("Option incorrect, please pick an appropriate option")
+        playRound();
+    }
+}
 
 //function game() with previous playRound function inside it to loop for a best of 5
 //keep count of player wins
