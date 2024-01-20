@@ -89,6 +89,7 @@ function game() {
     let playerWins = 0;
     let computerWins = 0;
     while (true) {
+        let result = playRound();
         if (playerWins === 3) {
             alert(`Player wins best of 5! Score was ${playerWins} to ${computerWins}`);
             break;
@@ -99,11 +100,11 @@ function game() {
         }
         else {
             playRound();
-            if (playRound() === winner) {
+            if (result === winner) {
                 playerWins++;
             }
-            
-            if(playRound() === loser) {
+
+            if(result === loser) {
                 computerWins++;
             }
         }
