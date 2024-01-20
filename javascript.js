@@ -70,12 +70,12 @@ function playRound(playerChoice, computerSelection) {
         }
         else {
             alert("Tie! Play again!")
-            playRound();
+            return playRound();
         }
     }
     else {
         alert("Option incorrect, please pick an appropriate option")
-        playRound();
+        return playRound();
     }
 }
 
