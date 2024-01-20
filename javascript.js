@@ -46,26 +46,32 @@ function playRound(playerChoice, computerSelection) {
     let userChoice = prompt("Rock, Paper, or Scissors?");
     let choice = userChoice.toLowerCase();
     let randomSelection = getComputerChoice();
-    const computerChoice = randomSelection.toLowerCase();
-    let winner = `You win! ${choice[0].toUpperCase() + choice.slice(1)} beats ${randomSelection}`;
-    let loser = `You lose! ${randomSelection} beats ${choice[0].toUpperCase() + choice.slice(1)}`;  
+    let computerChoice = randomSelection.toLowerCase();
+    const winner = "You win!";
+    const loser = "You lose!"; 
     if (choice === "rock" || choice === "paper" || choice === "scissors") {
         if (choice === "rock" && computerChoice === "scissors") {
+            alert("You win!");
             return winner;
         }
         else if (choice === "rock" && computerChoice === "paper") {
+            alert("You lose!");
             return loser;
         }
         else if (choice === "paper" && computerChoice === "rock") {
+            alert("You win!");
             return winner;
         }
         else if(choice === "paper" && computerChoice === "scissors") {
+            alert("You lose!");
             return loser;
         }
         else if(choice === "scissors" && computerChoice === "paper") {
+            alert("You win!");
             return winner;
         }
         else if(choice === "scissors" && computerChoice === "rock") {
+            alert("You lose!");
             return loser;
         }
         else {
@@ -84,12 +90,10 @@ function playRound(playerChoice, computerSelection) {
 //keep count of computer wins
 //if one reaches 3 stop games and announce winner and score
 //else game keeps getting played
-/*
 function game() {
     let playerWins = 0;
     let computerWins = 0;
     while (true) {
-        let result = playRound();
         if (playerWins === 3) {
             alert(`Player wins best of 5! Score was ${playerWins} to ${computerWins}`);
             break;
@@ -100,14 +104,15 @@ function game() {
         }
         else {
             playRound();
-            if (result === winner) {
-                playerWins++;
+            let result = playRound();
+            if (result === "You win!") {
+                playerWins += 1;
+                console.log("playerWins = " + playerWins);
             }
-
-            if(result === loser) {
-                computerWins++;
+            else if (result === "You lose!") {
+                computerWins += 1;
+                console.log("computerWins = " + computerWins);
             }
         }
     }
 }
-*/
