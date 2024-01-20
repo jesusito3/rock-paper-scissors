@@ -83,6 +83,30 @@ function playRound(playerChoice, computerSelection) {
 //keep count of player wins
 //keep count of computer wins
 //if one reaches 3 stop games and announce winner and score
-//else game keeps getting played 
-
-
+//else game keeps getting played
+/*
+function game() {
+    let playerWins = 0;
+    let computerWins = 0;
+    while (true) {
+        if (playerWins === 3) {
+            alert(`Player wins best of 5! Score was ${playerWins} to ${computerWins}`);
+            break;
+        }
+        else if (computerWins === 3) {
+            alert(`Computer wins best of 5! Score was ${computerWins} to ${playerWins}`);
+            break;
+        }
+        else {
+            playRound();
+            if (playRound() === winner) {
+                playerWins++;
+            }
+            
+            if(playRound() === loser) {
+                computerWins++;
+            }
+        }
+    }
+}
+*/
