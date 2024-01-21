@@ -47,24 +47,20 @@ function playRound(playerChoice, computerSelection) {
     let choice = userChoice.toLowerCase();
     let randomSelection = getComputerChoice();
     let computerChoice = randomSelection.toLowerCase();
-    const winner = 5;
-    const loser = 3; 
+    const win = "win";
+    const loss = "loss"; 
     if (choice === "rock" || choice === "paper" || choice === "scissors") {
         if (choice === "rock" && computerChoice === "scissors" ||
         choice === "paper" && computerChoice === "rock" ||
         choice === "scissors" && computerChoice === "paper") {
-            console.log("Win");
-            console.log(choice + " " + computerChoice);
-            alert("You win!");
-            return winner;
+            alert(`You win! ${choice[0].toUpperCase() + choice.slice(1)} beats ${randomSelection}`);
+            return win;
         }
         else if (choice === "rock" && computerChoice === "paper" || 
         choice === "paper" && computerChoice === "scissors" ||
         choice === "scissors" && computerChoice === "rock") {
-            console.log("Loss");
-            console.log(choice + " " + computerChoice);
-            alert("You lose!");
-            return loser;
+            alert(`You lose! ${randomSelection} beats ${choice[0].toUpperCase() + choice.slice(1)}`);
+            return loss;
         }
         else {
             alert("Tie! Play again!")
@@ -96,12 +92,11 @@ function game() {
         }
         else {
             let result = playRound();
-            console.log(result);
-            if (result === 5) {
+            if (result === "win") {
                 playerWins += 1;
                 console.log("playerWins = " + playerWins);
             }
-            else if (result === 3) {
+            else if (result === "loss") {
                 computerWins += 1;
                 console.log("computerWins = " + computerWins);
             }
