@@ -47,30 +47,22 @@ function playRound(playerChoice, computerSelection) {
     let choice = userChoice.toLowerCase();
     let randomSelection = getComputerChoice();
     let computerChoice = randomSelection.toLowerCase();
-    const winner = "You win!";
-    const loser = "You lose!"; 
+    const winner = 5;
+    const loser = 3; 
     if (choice === "rock" || choice === "paper" || choice === "scissors") {
-        if (choice === "rock" && computerChoice === "scissors") {
+        if (choice === "rock" && computerChoice === "scissors" ||
+        choice === "paper" && computerChoice === "rock" ||
+        choice === "scissors" && computerChoice === "paper") {
+            console.log("Win");
+            console.log(choice + " " + computerChoice);
             alert("You win!");
             return winner;
         }
-        else if (choice === "rock" && computerChoice === "paper") {
-            alert("You lose!");
-            return loser;
-        }
-        else if (choice === "paper" && computerChoice === "rock") {
-            alert("You win!");
-            return winner;
-        }
-        else if(choice === "paper" && computerChoice === "scissors") {
-            alert("You lose!");
-            return loser;
-        }
-        else if(choice === "scissors" && computerChoice === "paper") {
-            alert("You win!");
-            return winner;
-        }
-        else if(choice === "scissors" && computerChoice === "rock") {
+        else if (choice === "rock" && computerChoice === "paper" || 
+        choice === "paper" && computerChoice === "scissors" ||
+        choice === "scissors" && computerChoice === "rock") {
+            console.log("Loss");
+            console.log(choice + " " + computerChoice);
             alert("You lose!");
             return loser;
         }
@@ -103,13 +95,13 @@ function game() {
             break;
         }
         else {
-            playRound();
             let result = playRound();
-            if (result === "You win!") {
+            console.log(result);
+            if (result === 5) {
                 playerWins += 1;
                 console.log("playerWins = " + playerWins);
             }
-            else if (result === "You lose!") {
+            else if (result === 3) {
                 computerWins += 1;
                 console.log("computerWins = " + computerWins);
             }
