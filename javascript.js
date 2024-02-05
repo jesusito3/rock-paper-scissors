@@ -39,10 +39,16 @@ rockButton.addEventListener('click', () => {
     if (playRound('rock', getComputerChoice()) === 'win') {
         playerWins += 1;
         alert("Player wins: " + playerWins);
+        if (playerWins === 5) {
+            return winner();
+        }
     }
     else if (playRound('rock', getComputerChoice()) === 'loss') {
         computerWins += 1;
         alert("Computer wins: " + computerWins);
+        if (computerWins === 5) {
+            return loser();
+        }
     }
 });
 
@@ -50,10 +56,16 @@ paperButton.addEventListener('click', () => {
     if (playRound('paper', getComputerChoice()) === 'win') {
         playerWins += 1;
         alert("Player wins: " + playerWins);
+        if (playerWins === 5) {
+            return winner();
+        }
     }
     else if (playRound('paper', getComputerChoice()) === 'loss') {
         computerWins += 1;
         alert("Computer wins: " + computerWins);
+        if (computerWins === 5) {
+            return loser();
+        }
     }
 });
 
@@ -61,12 +73,30 @@ scissorsButton.addEventListener('click', () => {
     if (playRound('scissors', getComputerChoice()) === 'win') {
         playerWins += 1;
         alert("Player wins: " + playerWins);
+        if (playerWins === 5) {
+            return winner();
+        }
     }
     else if (playRound('scissors', getComputerChoice()) === 'loss') {
         computerWins += 1;
         alert("Computer wins: " + computerWins);
+        if (computerWins === 5) {
+            return loser();
+        }
     }
 });
+
+function winner() {
+    playerWins = 0;
+    computerWins = 0;
+    return alert("Player wins!");
+}
+
+function loser() {
+    playerWins = 0;
+    computerWins = 0;
+    return alert("Computer wins!");
+}
 
 /*
 */
