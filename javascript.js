@@ -4,27 +4,27 @@ function getComputerChoice() {
     return choices[num];
 }
 
+let div = document.querySelector('#results');
+
 function playRound(playerChoice, computerSelection) {
     let choice = playerChoice;
     let randomSelection = getComputerChoice();
     let computerChoice = randomSelection.toLowerCase();
-    if (choice === "rock" || choice === "paper" || choice === "scissors") {
-        if (choice === "rock" && computerChoice === "scissors" ||
-        choice === "paper" && computerChoice === "rock" ||
-        choice === "scissors" && computerChoice === "paper") {
-            alert(`You win! ${choice[0].toUpperCase() + choice.slice(1)} beats ${randomSelection}`);
-            return 'win';
-        }
-        else if (choice === "rock" && computerChoice === "paper" || 
-        choice === "paper" && computerChoice === "scissors" ||
-        choice === "scissors" && computerChoice === "rock") {
-            alert(`You lose! ${randomSelection} beats ${choice[0].toUpperCase() + choice.slice(1)}`);
-            return 'loss';
-        }
-        else {
-            alert("Tie! Play again!")
-            return playRound();
-        }
+    
+    if (choice === "rock" && computerChoice === "scissors" ||
+    choice === "paper" && computerChoice === "rock" ||
+    choice === "scissors" && computerChoice === "paper") {
+        console.log(`You win! ${choice[0].toUpperCase() + choice.slice(1)} beats ${randomSelection}`);
+        return 'win';
+    }
+    else if (choice === "rock" && computerChoice === "paper" || 
+    choice === "paper" && computerChoice === "scissors" ||
+    choice === "scissors" && computerChoice === "rock") {
+        console.log(`You lose! ${randomSelection} beats ${choice[0].toUpperCase() + choice.slice(1)}`);
+        return 'loss';
+    }
+    else {
+        return console.log('tie');
     }
 }
 
@@ -36,16 +36,17 @@ const paperButton = document.querySelector('#paperButton');
 const scissorsButton = document.querySelector('#scissorsButton');
 
 rockButton.addEventListener('click', () => {
-    if (playRound('rock', getComputerChoice()) === 'win') {
+    let result = playRound('rock', getComputerChoice());
+    if (result === 'win') {
         playerWins += 1;
-        alert("Player wins: " + playerWins);
+        console.log("Player wins: " + playerWins);
         if (playerWins === 5) {
             return winner();
         }
     }
-    else if (playRound('rock', getComputerChoice()) === 'loss') {
+    else if (result === 'loss') {
         computerWins += 1;
-        alert("Computer wins: " + computerWins);
+        console.log("Computer wins: " + computerWins);
         if (computerWins === 5) {
             return loser();
         }
@@ -53,16 +54,17 @@ rockButton.addEventListener('click', () => {
 });
 
 paperButton.addEventListener('click', () => {
-    if (playRound('paper', getComputerChoice()) === 'win') {
+    let result = playRound('paper', getComputerChoice());
+    if (result === 'win') {
         playerWins += 1;
-        alert("Player wins: " + playerWins);
+        console.log("Player wins: " + playerWins);
         if (playerWins === 5) {
             return winner();
         }
     }
-    else if (playRound('paper', getComputerChoice()) === 'loss') {
+    else if (result === 'loss') {
         computerWins += 1;
-        alert("Computer wins: " + computerWins);
+        console.log("Computer wins: " + computerWins);
         if (computerWins === 5) {
             return loser();
         }
@@ -70,16 +72,17 @@ paperButton.addEventListener('click', () => {
 });
 
 scissorsButton.addEventListener('click', () => {
-    if (playRound('scissors', getComputerChoice()) === 'win') {
+    let result = playRound('scissors', getComputerChoice());
+    if (result === 'win') {
         playerWins += 1;
-        alert("Player wins: " + playerWins);
+        console.log("Player wins: " + playerWins);
         if (playerWins === 5) {
             return winner();
         }
     }
-    else if (playRound('scissors', getComputerChoice()) === 'loss') {
+    else if (result === 'loss') {
         computerWins += 1;
-        alert("Computer wins: " + computerWins);
+        console.log("Computer wins: " + computerWins);
         if (computerWins === 5) {
             return loser();
         }
@@ -89,13 +92,17 @@ scissorsButton.addEventListener('click', () => {
 function winner() {
     playerWins = 0;
     computerWins = 0;
-    return alert("Player wins!");
+    return console.log("Player wins!");
 }
 
 function loser() {
     playerWins = 0;
     computerWins = 0;
-    return alert("Computer wins!");
+    return console.log("Computer wins!");
+}
+
+function tie() {
+    return console.log("Try again!")
 }
 
 /*
