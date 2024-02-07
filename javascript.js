@@ -4,7 +4,8 @@ function getComputerChoice() {
     return choices[num];
 }
 
-let div = document.querySelector('#results');
+const div = document.querySelector('#results');
+const score = document.querySelector('#score');
 
 function playRound(playerChoice, computerSelection) {
     let choice = playerChoice;
@@ -14,17 +15,17 @@ function playRound(playerChoice, computerSelection) {
     if (choice === "rock" && computerChoice === "scissors" ||
     choice === "paper" && computerChoice === "rock" ||
     choice === "scissors" && computerChoice === "paper") {
-        console.log(`You win! ${choice[0].toUpperCase() + choice.slice(1)} beats ${randomSelection}`);
+        div.textContent = `You win! ${choice[0].toUpperCase() + choice.slice(1)} beats ${randomSelection}`;
         return 'win';
     }
     else if (choice === "rock" && computerChoice === "paper" || 
     choice === "paper" && computerChoice === "scissors" ||
     choice === "scissors" && computerChoice === "rock") {
-        console.log(`You lose! ${randomSelection} beats ${choice[0].toUpperCase() + choice.slice(1)}`);
+        div.textContent = `You lose! ${randomSelection} beats ${choice[0].toUpperCase() + choice.slice(1)}`;
         return 'loss';
     }
     else {
-        return console.log('tie');
+        return div.textContent = 'Tie, play again!';
     }
 }
 
@@ -39,14 +40,14 @@ rockButton.addEventListener('click', () => {
     let result = playRound('rock', getComputerChoice());
     if (result === 'win') {
         playerWins += 1;
-        console.log("Player wins: " + playerWins);
+        score.textContent = `Score is player: ${playerWins} to computer: ${computerWins}`;
         if (playerWins === 5) {
             return winner();
         }
     }
     else if (result === 'loss') {
         computerWins += 1;
-        console.log("Computer wins: " + computerWins);
+        score.textContent = `Score is player: ${playerWins} to computer: ${computerWins}`;
         if (computerWins === 5) {
             return loser();
         }
@@ -57,14 +58,14 @@ paperButton.addEventListener('click', () => {
     let result = playRound('paper', getComputerChoice());
     if (result === 'win') {
         playerWins += 1;
-        console.log("Player wins: " + playerWins);
+        score.textContent = `Score is player: ${playerWins} to computer: ${computerWins}`;
         if (playerWins === 5) {
             return winner();
         }
     }
     else if (result === 'loss') {
         computerWins += 1;
-        console.log("Computer wins: " + computerWins);
+        score.textContent = `Score is player: ${playerWins} to computer: ${computerWins}`;
         if (computerWins === 5) {
             return loser();
         }
@@ -75,14 +76,14 @@ scissorsButton.addEventListener('click', () => {
     let result = playRound('scissors', getComputerChoice());
     if (result === 'win') {
         playerWins += 1;
-        console.log("Player wins: " + playerWins);
+        score.textContent = `Score is player: ${playerWins} to computer: ${computerWins}`;
         if (playerWins === 5) {
             return winner();
         }
     }
     else if (result === 'loss') {
         computerWins += 1;
-        console.log("Computer wins: " + computerWins);
+        score.textContent = `Score is player: ${playerWins} to computer: ${computerWins}`;
         if (computerWins === 5) {
             return loser();
         }
@@ -92,18 +93,11 @@ scissorsButton.addEventListener('click', () => {
 function winner() {
     playerWins = 0;
     computerWins = 0;
-    return console.log("Player wins!");
+    return div.textContent = "Player wins! Play again!";
 }
 
 function loser() {
     playerWins = 0;
     computerWins = 0;
-    return console.log("Computer wins!");
+    return div.textContent = "Computer wins! Play again!";
 }
-
-function tie() {
-    return console.log("Try again!")
-}
-
-/*
-*/
